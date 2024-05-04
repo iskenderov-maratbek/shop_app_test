@@ -21,14 +21,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final appCount = Provider((ref) => 1);
+final appCount = StateProvider((ref) => 1);
 
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(appCount);
+    int count = ref.watch(appCount);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -42,14 +42,17 @@ class MyHomePage extends ConsumerWidget {
               'You have pushed the button this many times:',
             ),
             Text(
-              '0',
+              '$count',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          ref.read(appCount.notifier).state++;
+          print(count.toString());
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
