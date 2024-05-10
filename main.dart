@@ -17,15 +17,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(375, 812),
+      designSize: const Size(375, 812),
         builder: (context, child) => MaterialApp(
               title: 'Flutter Demo',
               theme: AppTheme.appThemeData,
+
               routes: {
-                "/": (context) => Welcome(),
-                "/signIn": (context) => const SignIn(),
-                "/register": (context) => const SignUp(),
+                "/":(context)=>Welcome(),
+                "/signIn":(context)=>const SignIn(),
+                "/register":(context)=>const SignUp(),
               },
+
             ));
   }
 }
@@ -62,22 +64,23 @@ class MyHomePage extends ConsumerWidget {
           ],
         ),
       ),
-      floatingActionButton: Row(
+      floatingActionButton:  Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
             heroTag: "one",
-            onPressed: () => navRoute(),
+            onPressed:()=>navRoute(),
             tooltip: 'Increment',
-            child: const Icon(Icons.arrow_right_rounded),
+            child: Icon(Icons.arrow_right_rounded),
           ),
+
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
 
-void navRoute() {
+void navRoute(){
   //do what you like here
 }
 
